@@ -1,0 +1,17 @@
+<group name="windows,windows_security,">
+
+  <rule id="160226" level="12">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4698$</field>
+    <options>no_full_log</options>
+    <description>ПЛАНИРОВЩИК СОЗДАНА ЗАДАЧА - $(win.eventdata.taskName)</description>
+  </rule>
+  
+  <rule id="160227" level="12">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4702$</field>
+    <options>no_full_log</options>
+    <description>Обновлена задача, выполняемая по расписанию. - $(win.eventdata.taskName)</description>
+  </rule>
+
+</group>
