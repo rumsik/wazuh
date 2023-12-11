@@ -1,0 +1,78 @@
+<group name="windows,">
+
+
+
+  <rule id="160226" level="12">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4698$</field>
+    <description>Создана задача планировщика - $(win.eventdata.taskName) [ PC - $(win.system.computer) ] [ user - $(win.eventdata.subjectUserName) ]</description>
+  </rule>
+  
+  <rule id="160227" level="12">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4702$</field>
+    <options>no_full_log</options>
+    <description>Обновлена задача, выполняемая по расписанию. - $(win.eventdata.taskName)</description>
+  </rule>
+  
+  <rule id="160228" level="3">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^6416$</field>
+    <options>no_full_log</options>
+    <description>Подключение USB - $(win.eventdata.DeviceDescription)</description>
+  </rule>
+  
+  <rule id="160229" level="3">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">^4688$</field>
+    <options>no_full_log</options>
+    <description>Процесс запущен : $(win.eventdata.NewProcessName)</description>
+  </rule>
+  
+  <rule id="170229" level="3">
+    <if_sid>60600</if_sid>
+    <field name="win.eventdata.data">Service started</field>
+    <options>no_full_log</options>
+    <description>Запущена служба : $(win.system.providerName)</description>
+  </rule>
+
+  <rule id="170230" level="3">
+    <if_sid>60600</if_sid>
+    <field name="win.eventdata.data">Service stopped</field>
+    <options>no_full_log</options>
+    <description>Остановлена служба : $(win.system.providerName)</description>
+  </rule>
+  
+  
+  
+  <rule id="160230" level="3">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">4689</field>
+    <options>no_full_log</options>
+    <description>Процесс завершен $(win.eventdata.processName)</description>
+  </rule>
+  
+  <rule id="160231" level="0">
+    <if_sid>60103</if_sid>
+    <field name="win.system.eventID">4776</field>
+    <options>no_full_log</options>
+    <description> игнор </description>
+  </rule>
+  
+  
+  ---------------
+
+  
+  <rule id="111001" level="7">
+    <if_sid>61100</if_sid>
+    <field name="win.system.eventID">^1074$</field>
+    <description>Процесс $(win.eventdata.param1) инициировал действие "$(win.eventdata.param5)" для компьютера $(win.eventdata.param2) от имени пользователя $(win.eventdata.param7) по причине: $(win.eventdata.par)</description>
+  </rule>
+  
+
+  
+
+
+  
+
+</group>
