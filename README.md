@@ -1,6 +1,6 @@
 ---
 # wazuh
---
+
 
 List of wazuh rules that describe audit events windows, supplementing existing rules.
 
@@ -11,7 +11,7 @@ List of wazuh rules that describe audit events windows, supplementing existing r
 
 ---
 # SYSMON CONFIG for windows OS
---
+
 
 https://github.com/olafhartong/sysmon-modular/tree/master
 
@@ -19,6 +19,6 @@ https://github.com/olafhartong/sysmon-modular/tree/master
 
 ---
 # auditd rules for linux OS
---
+
 
 https://github.com/Neo23x0/auditd
