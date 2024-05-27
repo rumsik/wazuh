@@ -1,78 +1,180 @@
 <group name="windows,">
 
-
-
-  <rule id="160226" level="12">
-    <if_sid>60103</if_sid>
-    <field name="win.system.eventID">^4698$</field>
-    <description>Создана задача планировщика - $(win.eventdata.taskName) [ PC - $(win.system.computer) ] [ user - $(win.eventdata.subjectUserName) ]</description>
+  <rule id="101001" level="7">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^1074$</field>
+    <description>130 - Процесс $(win.eventdata.param1) инициировал действие "$(win.eventdata.param5)" для компьютера $(win.eventdata.param2) от имени пользователя $(win.eventdata.param7) по причине: $(win.eventdata.param3)</description>
   </rule>
+
+
   
-  <rule id="160227" level="12">
-    <if_sid>60103</if_sid>
-    <field name="win.system.eventID">^4702$</field>
+
+  <rule id="101101" level="3">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4688$</field>
     <options>no_full_log</options>
-    <description>Обновлена задача, выполняемая по расписанию. - $(win.eventdata.taskName)</description>
+    <description>130 - Создан новый процесс : $(win.eventdata.NewProcessName) - parent [$(win.eventdata.parentProcessName)]</description>
   </rule>
   
-  <rule id="160228" level="3">
-    <if_sid>60103</if_sid>
+    <rule id="101102" level="3">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4689$</field>
+    <options>no_full_log</options>
+    <description>130 - Выполнен выход из процесса : $(win.eventdata.processName) - пользователь [$(win.eventdata.subjectUserName)]</description>
+  </rule>
+
+  
+
+  <rule id="101201" level="3">
+    <if_group>windows</if_group>
     <field name="win.system.eventID">^6416$</field>
     <options>no_full_log</options>
     <description>Подключение USB - $(win.eventdata.DeviceDescription)</description>
   </rule>
   
-  <rule id="160229" level="3">
-    <if_sid>60103</if_sid>
-    <field name="win.system.eventID">^4688$</field>
+
+  <rule id="101301" level="3">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^6416$</field>
     <options>no_full_log</options>
-    <description>Процесс запущен : $(win.eventdata.NewProcessName)</description>
+    <description>Подключение USB - $(win.eventdata.DeviceDescription)</description>
+  </rule>
+
+
+  <rule id="101401" level="10">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4697$|^11707$|^11724$</field>
+    <options>no_full_log</options>
+    <description>Установлен\удален новый сервис\приложение</description>
+  </rule>
+
+
+  <rule id="101501" level="12">
+        <if_group>windows</if_group>
+        <field name="win.system.eventID">^4647$</field>
+        <description>130 - Пользователь [ $(win.eventdata.targetUserName) ] вышел из системы [ $(win.system.computer) ]</description>
+    </rule>
+    
+    <rule id="101502" level="12">
+        <if_group>windows</if_group>
+        <field name="win.system.eventID">^4634$</field>
+        <description>130 - Выполнен выход учетной записи [ $(win.eventdata.targetUserName) ] из системы  [ $(win.system.computer) ]</description>
+    </rule>
+    
+    
+    <rule id="101503" level="12">
+        <if_group>windows</if_group>
+        <field name="win.system.eventID">^4624$</field>
+        <description>130 - Вход в учетную запись [ $(win.eventdata.targetUserName) ] выполнен успешно [ $(win.system.computer) ]</description>
+    </rule>
+    
+    <rule id="101504" level="12">
+        <if_group>windows</if_group>
+        <field name="win.system.eventID">^4625$</field>
+        <description>130 - Учетной записи [ $(win.eventdata.targetUserName) ] не удалось выполнить вход в систему  [ $(win.system.computer) ] из [ $(win.eventdata.ipAddress) ]</description>
+    </rule>
+
+
+
+  <rule id="101601" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4673$|^4674$|^4985$</field>
+    <options>no_full_log</options>
+    <description>130 - Вызвана привилегированная служба [$(win.eventdata.processName)] на [ PC - $(win.system.computer) ] [ пользователем - $(win.eventdata.subjectUserName) ]</description>
+  </rule>
+
+
+
+
+
+  <rule id="101701" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4722$</field>
+    <options>no_full_log</options>
+    <description>130 - Учетная запись пользователя включена [$(win.eventdata.targetUserName)] на [ PC - $(win.system.computer) ] [ пользователем - $(win.eventdata.subjectUserName) ]</description>
+  </rule>
+
+  <rule id="101702" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4725$</field>
+    <options>no_full_log</options>
+    <description>130 - Отключена учетная запись пользователя [$(win.eventdata.targetUserName)] на [ PC - $(win.system.computer) ] [ пользователем - $(win.eventdata.subjectUserName) ]</description>
+  </rule>
+
+  <rule id="101703" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4720$</field>
+    <options>no_full_log</options>
+    <description>130 - Cоздана учетная запись пользователя [$(win.eventdata.targetUserName)] на [ PC - $(win.system.computer) ] [ пользователем - $(win.eventdata.subjectUserName) ]</description>
+  </rule>
+
+  <rule id="101704" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4726$</field>
+    <options>no_full_log</options>
+    <description>130 - Учетная запись пользователя удалена [$(win.eventdata.targetUserName)] на [ PC - $(win.system.computer) ] [ пользователем - $(win.eventdata.subjectUserName) ]</description>
+  </rule>
+
+
+
+  <rule id="101901" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4698$</field>
+    <options>no_full_log</options>
+    <description>130 - Создана задача [$(win.eventdata.taskName)], выполняемая по расписанию на [ PC - $(win.system.computer) ] [ пользователем - $(win.eventdata.subjectUserName) ]</description>
   </rule>
   
-  <rule id="170229" level="3">
-    <if_sid>60600</if_sid>
+  <rule id="101902" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">^4702$</field>
+    <options>no_full_log</options>
+    <description>130 - Обновлена задача [$(win.eventdata.taskName)], выполняемая по расписанию на [ PC - $(win.system.computer) ] [ пользователем - $(win.eventdata.subjectUserName) ]</description>
+  </rule>
+
+
+<rule id="102001" level="3">
+    <if_group>windows</if_group>
     <field name="win.eventdata.data">Service started</field>
     <options>no_full_log</options>
     <description>Запущена служба : $(win.system.providerName)</description>
   </rule>
 
-  <rule id="170230" level="3">
-    <if_sid>60600</if_sid>
+  <rule id="102002" level="3">
+    <if_group>windows</if_group>
     <field name="win.eventdata.data">Service stopped</field>
     <options>no_full_log</options>
     <description>Остановлена служба : $(win.system.providerName)</description>
   </rule>
-  
-  
-  
-  <rule id="160230" level="3">
-    <if_sid>60103</if_sid>
-    <field name="win.system.eventID">4689</field>
-    <options>no_full_log</options>
-    <description>Процесс завершен $(win.eventdata.processName)</description>
-  </rule>
-  
-  <rule id="160231" level="0">
-    <if_sid>60103</if_sid>
-    <field name="win.system.eventID">4776</field>
-    <options>no_full_log</options>
-    <description> игнор </description>
-  </rule>
-  
-  
-  ---------------
-
-  
-  <rule id="111001" level="7">
-    <if_sid>61100</if_sid>
-    <field name="win.system.eventID">^1074$</field>
-    <description>Процесс $(win.eventdata.param1) инициировал действие "$(win.eventdata.param5)" для компьютера $(win.eventdata.param2) от имени пользователя $(win.eventdata.param7) по причине: $(win.eventdata.par)</description>
-  </rule>
-  
-
-  
 
 
-  
+<rule id="102101" level="12">
+        <if_group>windows</if_group>
+        <field name="win.system.eventID">^4616$</field>
+        <description>130 - Системное время изменено [ $(win.eventdata.targetUserName) ] не удалось выполнить вход в систему  [ $(win.system.computer) ] из [ $(win.eventdata.ipAddress) ]</description>
+    </rule>
 
+<rule id="102201" level="12">
+        <if_group>windows</if_group>
+        <field name="win.system.eventID">^5024$|^5025$</field>
+        <description>130 - служба брандмауэра Win запущена\остановлена</description>
+    </rule>
+<rule id="102202" level="12">
+        <if_group>windows</if_group>
+        <field name="win.system.eventID">^5033$|^5034$</field>
+        <description>130 - драйвер брандмауэра Win запущена\остановлена</description>
+    </rule>
+
+<rule id="102301" level="12">
+        <if_group>windows</if_group>
+        <field name="win.system.eventID">^5140$|^5142$|^5143$|^5144$</field>
+        <description>130 - Объект общей сетевой папки добавлен\изменен\удален\доступ</description>
+    </rule>
+
+
+<rule id="102401" level="12">
+        <if_group>windows</if_group>
+        <field name="win.system.eventID">^4663$|^4656$|^4658$|^4660$|^4657$</field>
+        <description>130 - Активность с реестром</description>
+    </rule>
+  
 </group>
